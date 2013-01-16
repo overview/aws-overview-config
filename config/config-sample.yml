@@ -1,0 +1,7 @@
+---
+canonical_host: www.overviewproject.org
+config_path: /opt/overview/config
+database_ip: 10.1.1.1
+database_url: postgres://overview:overview@10.1.1.1/overview'
+web_port: 9000
+managed_code_path: /opt/overview-managed-code

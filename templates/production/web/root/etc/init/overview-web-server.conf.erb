@@ -1,0 +1,23 @@
+description "Overview web server (only listens on localhost)"
+author "Overview Project"
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+respawn
+
+console log
+setuid ubuntu
+setgid ubuntu
+chdir /opt/overview
+
+exec /usr/bin/java \
+       -cp <%= managed_code_path %>/overview-server/current/*
+       -Dconfig.resource=production.conf \
+       -Dhttp.port=<%= web_port %> \
+       -DapplyEvolutions.default=true \
+       -Ddb.default.driver=org.postgresql.Driver \
+       -Ddb.default.url=<%= database_url %> \
+       -Dsmtp.mock=false \
+       -Dlogger.resource=productionlog.xml \
+       play.core.server.NettyServer /opt/overview
