@@ -6,4 +6,4 @@ stop on runlevel [016]
 
 respawn
 
-exec /opt/haproxy/sbin/haproxy -f <%= config_path/haproxy.cfg %>
+exec /opt/haproxy/sbin/haproxy -f <%= config_path %>/haproxy.cfg
