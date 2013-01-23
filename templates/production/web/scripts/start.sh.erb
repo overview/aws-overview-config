@@ -1,2 +1,9 @@
-start haproxy
-start overview-web-server
+sudo reload rsyslog || true
+
+sudo stop haproxy || true
+sudo stop overview-web-server || true
+
+sleep 3
+
+sudo start haproxy
+sudo start overview-web-server

@@ -1,21 +1,22 @@
+global
+  log /dev/log local0
+
 defaults
-  log 127.0.0.1 local0
-  option tcplog
+  log global
+  option httplog
+  maxconn 4096
 
-listen http_redirect
-  mode tcp
+frontend http_redirect
+  mode http
   bind 0.0.0.0:80
-
-  timeout connect 1000
-  timeout server 1000
-  timeout client 5000
+  timeout client 50s
   redirect prefix https://<%= canonical_host %> code 301 
 
 frontend overview_frontend
   mode http
   bind 0.0.0.0:443 ssl crt <%= config_path %>/ssl-cert-and-pk.pem
 
-  timeout client 5000
+  timeout client 50s
 
   acl canonical_url hdr_dom(Host) eq <%= canonical_host %>
   redirect prefix https://<%= canonical_host %> code 301 if !canonical_url
@@ -24,7 +25,7 @@ frontend overview_frontend
 
 backend overview_backend
   mode http
-  timeout connect 1000
-  timeout server 5000
+  timeout connect 5s
+  timeout server 30s
 
   server overview 127.0.0.1:<%= web_port %>

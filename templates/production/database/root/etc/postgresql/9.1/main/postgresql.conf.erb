@@ -60,6 +60,7 @@ external_pid_file = '/var/run/postgresql/9.1-main.pid'		# write an extra PID fil
 					# comma-separated list of addresses;
 					# defaults to 'localhost', '*' = all
 					# (change requires restart)
+listen_addresses = '*'
 port = 5432				# (change requires restart)
 max_connections = 100			# (change requires restart)
 # Note:  Increasing max_connections costs ~400 bytes of shared memory per
@@ -109,6 +110,7 @@ ssl = true				# (change requires restart)
 shared_buffers = 24MB			# min 128kB
 					# (change requires restart)
 #temp_buffers = 8MB			# min 800kB
+temp_buffers = 32MB
 #max_prepared_transactions = 0		# zero disables the feature
 					# (change requires restart)
 # Note:  Increasing max_prepared_transactions costs ~600 bytes of shared memory
@@ -396,7 +398,7 @@ log_line_prefix = '%t '			# special values:
 					#   %q = stop here in non-session
 					#        processes
 					#   %% = '%'
-					# e.g. '<%u%%%d> '
+					# e.g. '<<%= "" %>%u%%%d> '
 #log_lock_waits = off			# log lock waits >= deadlock_timeout
 #log_statement = 'none'			# none, ddl, mod, all
 #log_temp_files = -1			# log temporary files equal or larger

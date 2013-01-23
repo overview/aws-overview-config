@@ -11,13 +11,25 @@ setuid ubuntu
 setgid ubuntu
 chdir /opt/overview
 
+env APPLICATION_SECRET="<%= secrets['application-secret'] %>"
+env SMTP_USERNAME="<%= secrets['smtp-username'] %>"
+env SMTP_PASSWORD="<%= secrets['smtp-password'] %>"
+env SMTP_HOST="<%= smtp_host %>"
+env SMTP_PORT="<%= smtp_port %>"
+env SMTP_SSL="<%= smtp_ssl && 'true' || 'false' %>"
+env LOGGER_SMTP_FROM="<%= logger_smtp_from %>"
+env LOGGER_SMTP_TO="<%= logger_smtp_to %>"
+env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_smtp_subject_prefix %>"
+env MAIL_FROM="<%= mail_from %>"
+env DATABASE_URL="<%= secrets['database-url'] %>"
+env GOOGLE_ANALYTICS_ID="<%= google_analytics_id %>"
+
 exec /usr/bin/java \
-       -cp <%= managed_code_path %>/overview-server/current/*
+       -cp "<%= managed_code_path %>/main/current/*" \
        -Dconfig.resource=production.conf \
+       -Dlogger.resource=productionlog.xml \
        -Dhttp.port=<%= web_port %> \
        -DapplyEvolutions.default=true \
        -Ddb.default.driver=org.postgresql.Driver \
-       -Ddb.default.url=<%= database_url %> \
-       -Dsmtp.mock=false \
-       -Dlogger.resource=productionlog.xml \
+       -Dpidfile.path=/tmp/overview-web-server-useless-pid-file \
        play.core.server.NettyServer /opt/overview
