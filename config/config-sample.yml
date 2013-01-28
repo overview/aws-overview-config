@@ -1,15 +1,21 @@
 ---
-canonical_host: www.overviewproject.org
-config_path: /opt/overview/config
-database_ip: 10.1.1.1
-web_port: 9000
-google_analytics_id: "UA-34992611-1"
-managed_code_path: /opt/overview/managed-code
-smtp_host: email-smtp.us-east-1.amazonaws.com
-smtp_port: 587
-smtp_ssl: true
-mail_from: 'no-reply@overviewproject.org'
-logger_smtp_from: 'server-error@overviewproject.org'
-logger_smtp_to: 'server-error@overviewproject.org'
-logger_smtp_subject_prefix: 'SERVER ERROR'
-logger_worker_smtp_subject_prefix: 'WORKER ERROR'
+production: &base
+  canonical_host: www.overviewproject.org
+  config_path: /opt/overview/config
+  web_port: 9000
+  google_analytics_id: "UA-34992611-1"
+  managed_code_path: /opt/overview/managed-code
+  database_username: "overview"
+  database_dbname: "overview"
+  smtp_host: email-smtp.us-east-1.amazonaws.com
+  smtp_port: 587
+  smtp_ssl: true
+  mail_from: 'no-reply@overviewproject.org'
+  logger_smtp_from: 'server-error@overviewproject.org'
+  logger_smtp_to: 'server-error@overviewproject.org'
+  logger_smtp_subject_prefix: 'SERVER ERROR'
+  logger_worker_smtp_subject_prefix: 'WORKER ERROR'
+staging:
+  <<: *base
+  canonical_host: staging.overviewproject.org
+  google_analytics_id: "UA-34992611-2"
