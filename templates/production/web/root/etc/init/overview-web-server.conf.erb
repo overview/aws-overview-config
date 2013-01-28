@@ -4,12 +4,17 @@ author "Overview Project"
 start on runlevel [2345]
 stop on runlevel [016]
 
-respawn
+pre-start script
+  grep overview /etc/group || groupadd overview -g 998
+  grep overview /etc/passwd || useradd overview -c "Overview Servers" -d /opt/overview -g 998 --system --shell /bin/false -u 998
+end script
 
-console output
-setuid ubuntu
-setgid ubuntu
+setuid overview
+setgid overview
 chdir /opt/overview
+console output
+
+respawn
 
 env APPLICATION_SECRET="<%= secrets['application-secret'] %>"
 env SMTP_USERNAME="<%= secrets['smtp-username'] %>"
