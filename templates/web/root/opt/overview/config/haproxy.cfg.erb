@@ -16,7 +16,7 @@ frontend http_redirect
 
 frontend overview_frontend
   mode http
-  bind 0.0.0.0:443 ssl crt <%= config_path %>/ssl-cert-and-pk.pem
+  bind 0.0.0.0:443 ssl crt <%= config_path %>/ssl-cert-and-pk.pem ciphers RC4:HIGH:!aNULL:!MD5
 
   timeout client 50s
 
