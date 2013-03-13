@@ -23,6 +23,8 @@ env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_smtp_subject_prefix %>"
 env MAIL_FROM="<%= mail_from %>"
 env DATABASE_URL="<%= database_url %>"
 env GOOGLE_ANALYTICS_ID="<%= google_analytics_id %>"
+env MAILCHIMP_API_KEY="<%= secrets['mailchimp-api-key'] %>"
+env MAILCHIMP_LIST_ID="<%= secrets['mailchimp-list-id'] %>"
 
 exec /usr/bin/java \
        -cp "<%= managed_code_path %>/main/current/*" \
