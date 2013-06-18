@@ -22,7 +22,7 @@ env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_worker_smtp_subject_prefix %>"
 
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
-       -cp "<%= managed_code_path %>/main/current/*" \
+       -cp "<%= managed_code_path %>/worker/current/*" \
        -Ddatasource.default.driver=org.postgresql.Driver \
        -Ddatasource.default.url="<%= database_url %>" \
        -Dlogback.configurationFile=workerprodlog.xml \
