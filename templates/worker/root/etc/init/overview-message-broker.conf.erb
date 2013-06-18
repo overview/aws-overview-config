@@ -16,7 +16,6 @@ respawn
 exec /usr/bin/java \
        -cp "<%= managed_code_path %>/message-broker/current/*" \
        -Dapollo.base=message-broker \
-       /var/lib/apollo \
        org.apache.activemq.apollo.boot.Apollo \
        /var/lib/apollo \
        org.apache.activemq.apollo.cli.Apollo \
