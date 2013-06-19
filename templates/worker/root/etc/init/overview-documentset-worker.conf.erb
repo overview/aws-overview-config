@@ -22,7 +22,7 @@ env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_worker_smtp_subject_prefix %>"
 
 env MESSAGE_BROKER_URI="http://<%= worker_ip %>:61613"
 env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
-env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>
+env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
@@ -31,5 +31,5 @@ exec /usr/bin/java \
        -Ddatasource.default.driver=org.postgresql.Driver \
        -Ddatasource.default.url="<%= database_url %>" \
        -Xmx3500m \
-       JobHandler \
+       DocumentSetWorker \
        2>&1 | logger -p local1.notice
