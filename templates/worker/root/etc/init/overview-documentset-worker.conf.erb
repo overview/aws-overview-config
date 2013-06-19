@@ -1,0 +1,35 @@
+description "Overview documentset-worker"
+author "Overview Project"
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+setuid overview
+setgid overview
+chdir /opt/overview
+console output
+
+respawn
+
+env SMTP_USERNAME="<%= secrets['smtp-username'] %>"
+env SMTP_PASSWORD="<%= secrets['smtp-password'] %>"
+env SMTP_HOST="<%= smtp_host %>"
+env SMTP_PORT="<%= smtp_port %>"
+env SMTP_SSL="<%= smtp_ssl && 'true' || 'false' %>"
+env LOGGER_SMTP_FROM="<%= logger_smtp_from %>"
+env LOGGER_SMTP_TO="<%= logger_smtp_to %>"
+env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_worker_smtp_subject_prefix %>"
+
+env MESSAGE_BROKER_URI="http://<%= worker_ip %>:61613"
+env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
+env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>
+
+<%# TODO: remove database_url from the commandline %>
+exec /usr/bin/java \
+       -cp "<%= managed_code_path %>/documentset-worker/current/*" \
+       -Dconfig.resource=production.conf \
+       -Ddatasource.default.driver=org.postgresql.Driver \
+       -Ddatasource.default.url="<%= database_url %>" \
+       -Xmx3500m \
+       JobHandler \
+       2>&1 | logger -p local1.notice
