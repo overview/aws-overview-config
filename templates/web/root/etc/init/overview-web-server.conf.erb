@@ -25,7 +25,7 @@ env DATABASE_URL="<%= database_url %>"
 env GOOGLE_ANALYTICS_ID="<%= google_analytics_id %>"
 env MAILCHIMP_API_KEY="<%= secrets['mailchimp-api-key'] %>"
 env MAILCHIMP_LIST_ID="<%= secrets['mailchimp-list-id'] %>"
-env MESSAGE_BROKER_URI="http://<%= worker_ip %>:61613"
+env MESSAGE_BROKER_URI="tcp://<%= worker_ip %>:61613"
 env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
 env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 
