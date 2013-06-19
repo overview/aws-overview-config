@@ -32,6 +32,10 @@ class Env
     "postgres://#{database_username}:#{secrets['database-password']}@#{database_ip}/#{database_dbname}?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
   end
 
+  def worker_ip
+   @worker_ip ||= `overview-manage status | grep '#{production_or_staging}' | grep 'worker' | cut -f4`.strip
+  end
+
   def method_missing(meth, *args, &block)
     if !config[meth.to_s].nil?
       config[meth.to_s]
