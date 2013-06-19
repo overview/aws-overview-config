@@ -27,7 +27,7 @@ env MAILCHIMP_API_KEY="<%= secrets['mailchimp-api-key'] %>"
 env MAILCHIMP_LIST_ID="<%= secrets['mailchimp-list-id'] %>"
 env MESSAGE_BROKER_URI="http://<%= worker_ip %>:61613"
 env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
-env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>
+env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 
 exec /usr/bin/java \
        -cp "<%= managed_code_path %>/main/current/*" \
