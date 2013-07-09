@@ -36,8 +36,8 @@ log4j.appender.email.BufferSize=1
 log4j.appender.email.SMTPHost=<%= smtp_host %>
 log4j.appender.email.SMTPUsername=<%= secrets['smtp-username'] %>
 log4j.appender.email.SMTPPassword=<%= secrets['smtp-password'] %>
-log4j.appender.email.From='<%= logger_smtp_from %>'
-log4j.appender.email.To='<%= logger_smtp_to %>'
+log4j.appender.email.From=<%= logger_smtp_from %>
+log4j.appender.email.To=<%= logger_smtp_to %>
 log4j.appender.email.Subject=<%= logger_worker_smtp_subject_prefix %>
 log4j.appender.email.layout=org.apache.log4j.PatternLayout
 log4j.appender.email.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5lp %m%n
