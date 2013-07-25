@@ -1,0 +1,9 @@
+description "Create the 'overview' user"
+author "Overview Project"
+
+start on starting overview-search-index
+
+pre-start script
+  grep overview /etc/group || groupadd overview -g 998
+  grep overview /etc/passwd || useradd overview -c "Overview Servers" -d /opt/overview -g 998 --system --shell /bin/false -u 998
+end script
