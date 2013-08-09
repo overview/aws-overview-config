@@ -316,7 +316,9 @@ bootstrap.mlockall: true
 #
 # 1. Disable multicast discovery (enabled by default):
 #
-# discovery.zen.ping.multicast.enabled: false
+
+discovery.zen.ping.multicast.enabled: false
+
 #
 # 2. Configure an initial list of master nodes in the cluster
 #    to perform discovery when new nodes (master or data) are started:
@@ -337,8 +339,11 @@ cloud:
    aws:
       access_key: <%= secrets['searchindex_access_key'] %>
       secret_key: <%= secrets['searchindex_secret_key'] %>
-   discovery:
-      type: ec2
+
+discovery:
+   type: ec2
+   ec2:
+      groups: <%= searchindex_security_group %>
 
 ################################## Slow Log ##################################
 
