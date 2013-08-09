@@ -25,6 +25,8 @@ env MESSAGE_BROKER_URI="tcp://<%= worker_ip %>:61613"
 env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
 env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 
+env ES_CLUSTER_NAME="<%= es_cluster_name %>"
+
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
        -cp "<%= managed_code_path %>/documentset-worker/current/*" \
