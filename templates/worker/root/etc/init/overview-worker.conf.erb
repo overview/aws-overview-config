@@ -20,6 +20,8 @@ env LOGGER_SMTP_FROM="<%= logger_smtp_from %>"
 env LOGGER_SMTP_TO="<%= logger_smtp_to %>"
 env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_worker_smtp_subject_prefix %>"
 env ES_CLUSTER_NAME="<%= es_cluster_name %>"
+env ES_ACCESS_KEY="<%= secrets['searchindex_access_key'] %>"
+env ES_SECRET_KEY="<%= secrets['searchindex_secret_key'] %>"
 
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
@@ -27,7 +29,6 @@ exec /usr/bin/java \
        -Ddatasource.default.driver=org.postgresql.Driver \
        -Ddatasource.default.url="<%= database_url %>" \
        -Dlogback.configurationFile=workerprodlog.xml \
-       -Des.cluster.name="<%= es_cluster_name %>" \
        -Xmx3500m \
        JobHandler \
        2>&1 | logger -p local1.notice
