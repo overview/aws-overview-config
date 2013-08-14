@@ -19,6 +19,11 @@ env SMTP_SSL="<%= smtp_ssl && 'true' || 'false' %>"
 env LOGGER_SMTP_FROM="<%= logger_smtp_from %>"
 env LOGGER_SMTP_TO="<%= logger_smtp_to %>"
 env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_worker_smtp_subject_prefix %>"
+
+env MESSAGE_BROKER_URI="tcp://<%= worker_ip %>:61613"
+env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
+env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
+
 env ES_CLUSTER_NAME="<%= es_cluster_name %>"
 env ES_ACCESS_KEY="<%= secrets['searchindex_access_key'] %>"
 env ES_SECRET_KEY="<%= secrets['searchindex_secret_key'] %>"
@@ -27,6 +32,7 @@ env ES_SECURITY_GROUP="<%= searchindex_security_group %>"
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
        -cp "<%= managed_code_path %>/worker/current/*" \
+       -Dconfig.resource=production.conf \
        -Ddatasource.default.driver=org.postgresql.Driver \
        -Ddatasource.default.url="<%= database_url %>" \
        -Dlogback.configurationFile=workerprodlog.xml \
