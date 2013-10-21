@@ -37,8 +37,14 @@
     <host_name><%= worker_ip %></host_name>
     <access_rule allow="users" action="connect create destroy send receive consume"/>
     <leveldb_store directory="${apollo.base}/data"/>
+
     <queue id="document-set-commands" auto_delete_after="0"/>
+    <queue id="file-group-commands" auto_delete_after="0"/> 
+    <queue id="clustering-commands" auto_delete_after="0"/>
+
   </virtual_host>
+
+  <web_admin bind="http://127.0.0.1:61680"/>
 
   <connector id="tcp" bind="tcp://0.0.0.0:61613" connection_limit="2000"/>
 </broker>
