@@ -29,6 +29,8 @@ env ES_ACCESS_KEY="<%= secrets['searchindex_access_key'] %>"
 env ES_SECRET_KEY="<%= secrets['searchindex_secret_key'] %>"
 env ES_SECURITY_GROUP="<%= searchindex_security_group %>"
 
+env SEARCH_INDEX_HOST="<%= searchindex_ip %>"
+
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
        -cp "<%= managed_code_path %>/worker/current/*" \

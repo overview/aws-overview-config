@@ -33,7 +33,11 @@ class Env
   end
 
   def worker_ip
-   @worker_ip ||= `overview-manage status | grep '#{production_or_staging}' | grep 'worker' | cut -f4`.strip
+    @worker_ip ||= `overview-manage status | grep '#{production_or_staging}' | grep 'worker' | cut -f4`.strip
+  end
+
+  def searchindex_ip
+    @searchindex_ip || `overview-manage status | grep '#{production_or_staging}' | grep 'searchindex' | cut -f4`.strip
   end
 
   def method_missing(meth, *args, &block)
