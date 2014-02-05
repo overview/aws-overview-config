@@ -39,6 +39,6 @@ exec /usr/bin/java \
        -Ddatasource.default.driver=org.postgresql.Driver \
        -Ddatasource.default.url="<%= database_url %>" \
        -Dlogback.configurationFile=workerprodlog.xml \
-       -Xmx3500m \
+       -Xmx3000m \
        org.overviewproject.DocumentSetWorker \
        2>&1 | logger -p local2.notice
