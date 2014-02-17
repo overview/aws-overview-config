@@ -37,5 +37,6 @@ exec /usr/bin/java \
        -DapplyEvolutions.default=true \
        -Ddb.default.driver=org.postgresql.Driver \
        -Dpidfile.path=/tmp/overview-web-server-useless-pid-file \
+       -Duser.timezone=UTC \
        play.core.server.NettyServer /opt/overview \
        2>&1 | logger -p local1.notice

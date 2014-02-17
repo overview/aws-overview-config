@@ -16,6 +16,7 @@ exec /usr/bin/java \
        -Dapollo.base=/var/lib/apollo \
        -Dmail.smtp.starttls.enable="<%= smtp_ssl && 'true' || 'false' %>" \
        -Dmail.smtp.port="<%= smtp_port %>" \
+       -Duser.timezone=UTC \
        org.apache.activemq.apollo.boot.Apollo \
        /var/lib/apollo \
        org.apache.activemq.apollo.cli.Apollo \
