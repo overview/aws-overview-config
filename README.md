@@ -1,6 +1,6 @@
 Generates all configuration for all our Amazon Web Services instances.
 
-== Files
+## Files
 
 Config files are meant to be installed on top of a basic Ubuntu installation.
 For instance, the file
@@ -8,7 +8,7 @@ For instance, the file
 processed into `generated/production/web/root/etc/nginx/conf.d/overview.conf`
 and installed to `/etc/nginx/conf.d/overview.conf` on production web instances.
 
-== Scripts
+## Scripts
 
 When migrating from one version of configuration files to the next, we:
 
@@ -25,7 +25,7 @@ not assume the services are started (in case the previous version is badly
 configured, or the server has a bug); `start.sh` should not assume the services
 are stopped.
 
-== Interpolation
+## Interpolation
 
 Scripts are pre-processed with ERB. Interpolation takes the form
 `<%= secrets['postgres-url'] %>`. That's Ruby code in there.
@@ -38,7 +38,7 @@ variables:
       OVERVIEW_CONFIG=/path/to/config.yml \
       ./generate.sh
 
-== Relation to `overview-server`
+## Relation to `overview-server`
 
 These configuration files are deployed separately from `overview-server`.
 However, some configuration options (most notably, `ENV` values) affect
