@@ -50,3 +50,8 @@ Here are some guidelines.
 * If `overview-server` is to gain a new configuration option, the configuration
   should usually be deployed first. That way, the new version of
   `overview-server` won't crash when it is deployed.
+
+
+## License
+
+This software is Copyright 2011-2013 The Associated Press, and distributed under the terms of the GNU Affero General Public License. See the LICENSE file for details.
