@@ -16,6 +16,7 @@ frontend http_redirect
 
 frontend overview_frontend
   mode http
+
   # Keys from https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
   #
   # haproxy <= 1.5dev17 need us to specify a named curve to support perfect
@@ -27,6 +28,9 @@ frontend overview_frontend
 
   acl canonical_url hdr_dom(Host) eq <%= canonical_host %>
   redirect prefix https://<%= canonical_host %> code 301 if !canonical_url
+
+  # Add the HSTS header with a 1 year max-age
+  rspadd Strict-Transport-Security:\ max-age=31536000
 
   default_backend overview_backend
 
