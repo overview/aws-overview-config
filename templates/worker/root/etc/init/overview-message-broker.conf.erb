@@ -12,7 +12,7 @@ console output
 respawn
 
 exec /usr/bin/java \
-       -cp "<%= managed_code_path %>/message-broker/current/*" \
+       -cp "<%= managed_code_path %>/message-broker/*" \
        -Dapollo.base=/var/lib/apollo \
        -Dmail.smtp.starttls.enable="<%= smtp_ssl && 'true' || 'false' %>" \
        -Dmail.smtp.port="<%= smtp_port %>" \

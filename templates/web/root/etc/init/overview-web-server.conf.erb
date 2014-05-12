@@ -32,7 +32,7 @@ env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
 env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 
 exec /usr/bin/java \
-       -cp "<%= managed_code_path %>/main/current/*" \
+       -cp "<%= managed_code_path %>/frontend/*" \
        -Dconfig.resource=production.conf \
        -Dlogger.resource=productionlog.xml \
        -Dhttp.port=<%= web_port %> \
