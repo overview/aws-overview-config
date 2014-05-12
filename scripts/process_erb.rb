@@ -25,7 +25,7 @@ class Env
   end
 
   def database_ip
-    @database_ip ||= `overview-manage status | grep '#{production_or_staging}' | grep 'database' | cut -f4`.strip
+    @database_ip ||= get_ips('database').first
   end
 
   def database_url
@@ -33,11 +33,11 @@ class Env
   end
 
   def worker_ip
-    @worker_ip ||= `overview-manage status | grep '#{production_or_staging}' | grep 'worker' | cut -f4`.strip
+    @worker_ip ||= get_ips('worker').first
   end
 
   def searchindex_ip
-    @searchindex_ip || `overview-manage status | grep '#{production_or_staging}' | grep 'searchindex' | cut -f4`.strip
+    @searchindex_ip ||= get_ips('searchindex').first
   end
 
   def method_missing(meth, *args, &block)
@@ -49,6 +49,20 @@ class Env
   end
 
   def binding; super; end # public
+
+  private
+
+  def overview_manage_status
+    @overview_manage_status ||= `overview-manage status`
+    @overview_manage_status.lines
+  end
+
+  def get_ips(machine_type)
+    overview_manage_status
+      .grep(/#{production_or_staging}/)
+      .grep(/#{machine_type}/)
+      .map { |line| line.split[2] }
+  end
 end
 
 env = Env.new(production_or_staging)
