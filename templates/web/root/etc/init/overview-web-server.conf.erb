@@ -37,7 +37,7 @@ env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 # in the frontend.
 exec /usr/bin/java \
        -Xmx3000M \
-       -cp "<%= managed_code_path %>/main/current/*" \
+       -cp "<%= managed_code_path %>/frontend/*" \
        -Dconfig.resource=production.conf \
        -Dlogger.resource=productionlog.xml \
        -Dhttp.port=<%= web_port %> \

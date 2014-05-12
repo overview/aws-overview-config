@@ -4,7 +4,7 @@ production: &base
   config_path: /opt/overview/config
   web_port: 9000
   google_analytics_id: "UA-34992611-1"
-  managed_code_path: /opt/overview/managed-code
+  managed_code_path: /opt/overview
   database_username: "overview"
   database_dbname: "overview"
   smtp_host: email-smtp.us-east-1.amazonaws.com

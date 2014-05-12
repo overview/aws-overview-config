@@ -33,7 +33,7 @@ env ES_SECURITY_GROUP="<%= searchindex_security_group %>"
 
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
-       -cp "<%= managed_code_path %>/worker/current/*" \
+       -cp "<%= managed_code_path %>/worker/*" \
        -Dfile.encoding=UTF8 \
        -Dconfig.resource=production.conf \
        -Ddatasource.default.driver=org.postgresql.Driver \
