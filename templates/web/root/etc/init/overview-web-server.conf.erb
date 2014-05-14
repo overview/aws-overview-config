@@ -31,7 +31,12 @@ env MESSAGE_BROKER_URI="tcp://<%= worker_ip %>:61613"
 env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
 env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 
+# FIXME remove the -Xmx. We have it because of
+# https://www.pivotaltracker.com/n/projects/928628/stories/71065558
+# but there's no good reason for us to be using lots of RAM _anywhere_
+# in the frontend.
 exec /usr/bin/java \
+       -Xmx3000M \
        -cp "<%= managed_code_path %>/frontend/*" \
        -Dconfig.resource=production.conf \
        -Dlogger.resource=productionlog.xml \
