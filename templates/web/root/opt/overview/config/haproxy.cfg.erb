@@ -37,6 +37,6 @@ frontend overview_frontend
 backend overview_backend
   mode http
   timeout connect 5s
-  timeout server 30s
+  timeout server 120s
 
   server overview 127.0.0.1:<%= web_port %>
