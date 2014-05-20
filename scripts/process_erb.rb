@@ -40,6 +40,10 @@ class Env
     @searchindex_ip ||= get_ips('searchindex').first
   end
 
+  def logstash_ip
+    @logstash_ip ||= get_env_ips('logstash', 'logstash').first
+  end
+
   def method_missing(meth, *args, &block)
     if !config[meth.to_s].nil?
       config[meth.to_s]
@@ -55,6 +59,13 @@ class Env
   def overview_manage_status
     @overview_manage_status ||= `overview-manage status`
     @overview_manage_status.lines
+  end
+
+  def get_env_ips(env, machine_type)
+    overview_manage_status
+      .grep(/#{env}/)
+      .grep(/#{machine_type}/)
+      .map { |line| line.split[2] }
   end
 
   def get_ips(machine_type)
