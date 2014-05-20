@@ -1,0 +1,5 @@
+# Stop and start rsyslog to make sure any changes in rsyslog.conf and rsyslog.conf.d are read
+# reload doesn't work because of http://web.archiveorange.com/archive/v/LLXmLUHUR8kHhie46utU 
+sudo stop rsyslog || true
+sleep 1
+sudo start rsyslog || true
