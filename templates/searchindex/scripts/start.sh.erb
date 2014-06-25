@@ -1,16 +1,13 @@
-sudo stop overview-search-index || true
-
-sleep 3
-
-
-# Stop and start rsyslog to make sure any changes in rsyslog.conf and rsyslog.conf.d are read
-# reload doesn't work because of http://web.archiveorange.com/archive/v/LLXmLUHUR8kHhie46utU
-# Try to make sure rsyslog is being restarted while our processes are not running.
-sudo stop rsyslog || true
-sleep 1
-sudo start rsyslog || true
-sleep 1
-
-sudo start overview-search-index
-
-
+# Don't do anything. We only want to restart the search index or message broker
+# in rare circumstances; when that happens, we can get our hands dirty.
+#
+# This is partially because message-broker is difficult to manage. Apollo's
+# shutdown hook sometimes prevents shutdown altogether.
+#
+#sudo stop overview-search-index || true
+#sudo stop overview-message-broker || true
+#
+#sleep 3
+#
+#sudo start overview-message-broker
+#sudo start overview-search-index

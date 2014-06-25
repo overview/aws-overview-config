@@ -2,6 +2,7 @@ description "Create the 'overview' user"
 author "Overview Project"
 
 start on starting overview-worker
+start on starting overview-documentset-worker
 
 pre-start script
   grep overview /etc/group || groupadd overview -g 998
