@@ -1,4 +1,4 @@
-# Don't do anything. We only want to restart the search index or message broker
+# Don't restart. We only want to restart the search index or message broker
 # in rare circumstances; when that happens, we can get our hands dirty.
 #
 # This is partially because message-broker is difficult to manage. Apollo's
@@ -11,3 +11,7 @@
 #
 #sudo start overview-message-broker
 #sudo start overview-search-index
+#
+# We do want a brand-new instance to start up, though:
+sudo start overview-search-index || true
+sudo start overview-message-broker || true
