@@ -32,12 +32,12 @@ class Env
     "postgres://#{database_username}:#{secrets['database-password']}@#{database_ip}/#{database_dbname}?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
   end
 
-  def worker_ip
-    @worker_ip ||= get_ips('worker').first
-  end
-
   def searchindex_ip
     @searchindex_ip ||= get_ips('searchindex').first
+  end
+
+  def message_broker_ip
+    searchindex_ip
   end
 
   def logstash_ip

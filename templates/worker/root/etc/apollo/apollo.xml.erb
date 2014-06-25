@@ -34,7 +34,7 @@
 
   <virtual_host id="broker">
     <host_name>localhost</host_name>
-    <host_name><%= worker_ip %></host_name>
+    <host_name><%= message_broker_ip %></host_name>
     <access_rule allow="users" action="connect create destroy send receive consume"/>
     <leveldb_store directory="${apollo.base}/data"/>
 
