@@ -5,6 +5,7 @@ start on starting overview-web-server
 
 pre-start script
   grep overview /etc/group || groupadd overview -g 998
-  grep overview /etc/passwd || useradd overview -c "Overview Servers" -d /opt/overview -g 998 --system --shell /bin/false -u 998
-  chown overview:overview /opt/overview
+  grep overview /etc/passwd || useradd overview -c "Overview Servers" -d /home/overview -g 998 --system --shell /bin/false -u 998
+  mkdir -p /home/overview
+  chown overview:overview /home/overview
 end script
