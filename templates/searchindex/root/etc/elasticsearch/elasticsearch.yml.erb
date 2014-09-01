@@ -335,16 +335,16 @@ discovery.zen.ping.multicast.enabled: false
 #
 # See <http://elasticsearch.org/tutorials/2011/08/22/elasticsearch-on-ec2.html>
 # for a step-by-step tutorial.
-
-cloud:
-   aws:
-      access_key: <%= secrets['searchindex_access_key'] %>
-      secret_key: <%= secrets['searchindex_secret_key'] %>
-
-discovery:
-   type: ec2
-   ec2:
-      groups: <%= searchindex_security_group %>
+#
+#cloud:
+#   aws:
+#      access_key: %= secrets['searchindex_access_key'] %>
+#      secret_key: %= secrets['searchindex_secret_key'] %>
+#
+#discovery:
+#   type: ec2
+#   ec2:
+#      groups: %= searchindex_security_group %>
 
 ################################## Slow Log ##################################
 
