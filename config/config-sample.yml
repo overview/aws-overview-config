@@ -16,7 +16,6 @@ production: &base
   logger_smtp_subject_prefix: 'SERVER ERROR'
   logger_worker_smtp_subject_prefix: 'WORKER ERROR'
   es_cluster_name: overview-search-index
-  searchindex_security_group: searchindex
 staging:
   <<: *base
   canonical_host: staging.overviewproject.org

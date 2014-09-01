@@ -25,11 +25,8 @@ env MESSAGE_BROKER_URI="tcp://<%= message_broker_ip %>:61613"
 env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
 env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 
-env ES_HOST="<%= searchindex_ip %>"
 env ES_CLUSTER_NAME="<%= es_cluster_name %>"
-env ES_ACCESS_KEY="<%= secrets['searchindex_access_key'] %>"
-env ES_SECRET_KEY="<%= secrets['searchindex_secret_key'] %>"
-env ES_SECURITY_GROUP="<%= searchindex_security_group %>"
+env ES_HOSTS="<%= searchindex_ip %>:9300"
 
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
