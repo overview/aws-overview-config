@@ -15,6 +15,7 @@ production: &base
   logger_smtp_to: 'server-error@overviewproject.org'
   logger_smtp_subject_prefix: 'SERVER ERROR'
   logger_worker_smtp_subject_prefix: 'WORKER ERROR'
+  redis_port: 6379
   es_cluster_name: overview-search-index
 staging:
   <<: *base
