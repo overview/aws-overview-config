@@ -8,7 +8,7 @@ class Processor
 
   def process_all(input_basedir, output_basedir)
     Dir.glob("#{input_basedir}/**/*.erb") do |input_filename|
-      output_filename = output_basedir + input_filename[input_basedir.length..-1]
+      output_filename = output_basedir + input_filename[input_basedir.length...-4]
       output_dirname = File.dirname(output_filename)
       FileUtils.mkdir_p(output_dirname)
       process(input_filename, output_filename)
