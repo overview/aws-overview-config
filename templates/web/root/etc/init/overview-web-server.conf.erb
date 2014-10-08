@@ -30,6 +30,8 @@ env MAILCHIMP_LIST_ID="<%= secrets['mailchimp-list-id'] %>"
 env MESSAGE_BROKER_URI="tcp://<%= message_broker_ip %>:61613"
 env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
 env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
+env REDIS_HOST="<%= redis_ip %>"
+env REDIS_PORT="<%= redis_port %>"
 env ES_CLUSTER_NAME="<%= config['es_cluster_name'] %>"
 env ES_HOSTS="<%= searchindex_ip %>:9300"
 

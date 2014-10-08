@@ -1,0 +1,12 @@
+daemonize yes
+pidfile /var/run/redis/redis-server.pid
+port 6379
+timeout 0
+loglevel notice
+syslog-enabled yes
+syslog-ident redis
+syslog-facility local1
+maxmemory 1GB
+maxmemory-samples 5
+slowlog-log-slower-than 10000
+slowlog-max-len 128

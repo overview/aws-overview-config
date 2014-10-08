@@ -54,5 +54,4 @@ Here are some guidelines.
 
 ## License
 
-This software is Copyright 2011-2013 The Associated Press, and distributed under the terms of the GNU Affero General Public License. See the LICENSE file for details.
-
+This software is Copyright 2011-2013 The Associated Press, and distributed under the terms of the GNU Affero General Public License 3.0. See the LICENSE file for details.
