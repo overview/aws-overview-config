@@ -35,7 +35,7 @@ frontend overview_frontend
   # haproxy <= 1.5dev17 need us to specify a named curve to support perfect
   # forward secrecy. (Above  that, the default is prime256v1.)
   # https://github.com/macro/haproxy/commit/6924ef8b12ad6f935bb5287ff4b2ae17bdbbf928
-  bind 0.0.0.0:443 ssl crt <%= config_path %>/ssl-cert-and-pk.pem ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS ecdhe prime256v1
+  bind 0.0.0.0:443 ssl crt <%= config_path %>/ssl-cert-and-pk.pem no-sslv3 ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+3DES:!aNULL:!MD5:!DSS ecdhe prime256v1
 
   timeout client 50s
 
