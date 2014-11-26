@@ -12,6 +12,13 @@ console output
 
 respawn
 
+env AWS_ACCESS_KEY_ID="<%= secrets['aws-access-key-id'] %>"
+env AWS_SECRET_KEY="<%= secrets['aws-secret-key'] %>"
+
+env BLOB_STORAGE_PAGE_DATA_LOCATION="<%= config['blob-storage-page-data-location'] %>"
+env BLOB_STORAGE_FILE_CONTENTS_LOCATION="<%= config['blob-storage-file-contents-location'] %>"
+env BLOB_STORAGE_FILE_VIEW_LOCATION="<%= config['blob-storage-file-view-location'] %>"
+
 env SMTP_USERNAME="<%= secrets['smtp-username'] %>"
 env SMTP_PASSWORD="<%= secrets['smtp-password'] %>"
 env SMTP_HOST="<%= smtp_host %>"

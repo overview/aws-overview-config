@@ -12,28 +12,44 @@ console output
 respawn
 
 env APPLICATION_SECRET="<%= secrets['application-secret'] %>"
+
+env AWS_ACCESS_KEY_ID="<%= secrets['aws-access-key-id'] %>"
+env AWS_SECRET_KEY="<%= secrets['aws-secret-key'] %>"
+
+env BLOB_STORAGE_PAGE_DATA_LOCATION="<%= config['blob-storage-page-data-location'] %>"
+env BLOB_STORAGE_FILE_CONTENTS_LOCATION="<%= config['blob-storage-file-contents-location'] %>"
+env BLOB_STORAGE_FILE_VIEW_LOCATION="<%= config['blob-storage-file-view-location'] %>"
+
+env DATABASE_URL="<%= database_url %>"
+
+env ES_CLUSTER_NAME="<%= config['es_cluster_name'] %>"
+env ES_HOSTS="<%= searchindex_ip %>:9300"
+
+env GOOGLE_ANALYTICS_ID="<%= google_analytics_id %>"
+
+env INTERCOM_APP_ID="<%= secrets['intercom-app-id'] %>"
+env INTERCOM_SECRET_KEY="<%= secrets['intercom-secret-key'] %>"
+
+env LOGGER_SMTP_FROM="<%= logger_smtp_from %>"
+env LOGGER_SMTP_TO="<%= logger_smtp_to %>"
+env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_smtp_subject_prefix %>"
+
+env MAIL_FROM="<%= mail_from %>"
 env SMTP_USERNAME="<%= secrets['smtp-username'] %>"
 env SMTP_PASSWORD="<%= secrets['smtp-password'] %>"
 env SMTP_HOST="<%= smtp_host %>"
 env SMTP_PORT="<%= smtp_port %>"
 env SMTP_SSL="<%= smtp_ssl && 'true' || 'false' %>"
-env LOGGER_SMTP_FROM="<%= logger_smtp_from %>"
-env LOGGER_SMTP_TO="<%= logger_smtp_to %>"
-env LOGGER_SMTP_SUBJECT_PREFIX="<%= logger_smtp_subject_prefix %>"
-env MAIL_FROM="<%= mail_from %>"
-env DATABASE_URL="<%= database_url %>"
-env GOOGLE_ANALYTICS_ID="<%= google_analytics_id %>"
-env INTERCOM_APP_ID="<%= secrets['intercom-app-id'] %>"
-env INTERCOM_SECRET_KEY="<%= secrets['intercom-secret-key'] %>"
+
 env MAILCHIMP_API_KEY="<%= secrets['mailchimp-api-key'] %>"
 env MAILCHIMP_LIST_ID="<%= secrets['mailchimp-list-id'] %>"
+
 env MESSAGE_BROKER_URI="tcp://<%= message_broker_ip %>:61613"
 env MESSAGE_BROKER_USERNAME="<%= secrets['message_broker_username'] %>"
 env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
+
 env REDIS_HOST="<%= redis_ip %>"
 env REDIS_PORT="<%= redis_port %>"
-env ES_CLUSTER_NAME="<%= config['es_cluster_name'] %>"
-env ES_HOSTS="<%= searchindex_ip %>:9300"
 
 # FIXME remove the -Xmx. We have it because of
 # https://www.pivotaltracker.com/n/projects/928628/stories/71065558

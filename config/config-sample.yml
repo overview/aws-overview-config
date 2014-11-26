@@ -1,5 +1,8 @@
 ---
 production: &base
+  blob-storage-page-data-location: "s3:overview-production-page-data"
+  blob-storage-file-contents-location: "s3:overview-production-file-contents"
+  blob-storage-file-view-location: "s3:overview-production-file-view"
   canonical_host: www.overviewproject.org
   config_path: /opt/overview/config
   web_port: 9000
@@ -19,5 +22,8 @@ production: &base
   es_cluster_name: overview-search-index
 staging:
   <<: *base
+  blob-storage-page-data-location: "s3:overview-staging-page-data"
+  blob-storage-file-contents-location: "s3:overview-staging-file-contents"
+  blob-storage-file-view-location: "s3:overview-staging-file-view"
   canonical_host: staging.overviewproject.org
   google_analytics_id: "UA-34992611-2"
