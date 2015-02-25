@@ -35,13 +35,17 @@ env MESSAGE_BROKER_PASSWORD="<%= secrets['message_broker_password'] %>"
 env ES_CLUSTER_NAME="<%= es_cluster_name %>"
 env ES_HOSTS="<%= searchindex_ip %>:9300"
 
+env DATABASE_SERVER_NAME="<%= database_ip %>"
+env DATABASE_NAME="<%= database_dbname %>"
+env DATABASE_USERNAME="<%= database_username %>"
+env DATABASE_PASSWORD="<%= secrets['database-password'] %>"
+env DATABASE_SSL_FACTORY="org.postgresql.ssl.NonValidatingFactory"
+
 <%# TODO: remove database_url from the commandline %>
 exec /usr/bin/java \
        -cp "<%= managed_code_path %>/documentset-worker/*" \
        -Dfile.encoding=UTF8 \
        -Dconfig.resource=production.conf \
-       -Ddatasource.default.driver=org.postgresql.Driver \
-       -Ddatasource.default.url="<%= database_url %>" \
        -Dlogback.configurationFile=workerprodlog.xml \
        -Duser.timezone=UTC \
        -Xmx3000m \

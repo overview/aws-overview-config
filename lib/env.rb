@@ -23,10 +23,6 @@ class Env
     @database_ip ||= get_ips('database').first
   end
 
-  def database_url
-    "postgres://#{database_username}:#{secrets['database-password']}@#{database_ip}/#{database_dbname}?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
-  end
-
   def searchindex_ip
     @searchindex_ip ||= get_ips('searchindex').first
   end

@@ -18,6 +18,12 @@ env BLOB_STORAGE_PAGE_DATA_LOCATION="<%= config['blob-storage-page-data-location
 env BLOB_STORAGE_FILE_CONTENTS_LOCATION="<%= config['blob-storage-file-contents-location'] %>"
 env BLOB_STORAGE_FILE_VIEW_LOCATION="<%= config['blob-storage-file-view-location'] %>"
 
+env DATABASE_SERVER_NAME="<%= database_ip %>"
+env DATABASE_NAME="<%= database_dbname %>"
+env DATABASE_USERNAME="<%= database_username %>"
+env DATABASE_PASSWORD="<%= secrets['database-password'] %>"
+env DATABASE_SSL_FACTORY="org.postgresql.ssl.NonValidatingFactory"
+
 env SMTP_USERNAME="<%= secrets['smtp-username'] %>"
 env SMTP_PASSWORD="<%= secrets['smtp-password'] %>"
 env SMTP_HOST="<%= smtp_host %>"
@@ -39,8 +45,6 @@ exec /usr/bin/java \
        -cp "<%= managed_code_path %>/worker/*" \
        -Dfile.encoding=UTF8 \
        -Dconfig.resource=production.conf \
-       -Ddatasource.default.driver=org.postgresql.Driver \
-       -Ddatasource.default.url="<%= database_url %>" \
        -Dlogback.configurationFile=workerprodlog.xml \
        -Duser.timezone=UTC \
        -Xmx3000m \
