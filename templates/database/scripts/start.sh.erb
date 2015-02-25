@@ -1,3 +1,4 @@
 #!/bin/sh
 
+sudo chown postgres:postgres /etc/postgresql -R
 sudo pg_ctlcluster 9.4 main reload
