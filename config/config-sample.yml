@@ -4,7 +4,6 @@ production: &base
   blob-storage-file-contents-location: "s3:overview-production-file-contents"
   blob-storage-file-view-location: "s3:overview-production-file-view"
   canonical_host: www.overviewproject.org
-  config_path: /opt/overview/config
   web_port: 9000
   google_analytics_id: "UA-34992611-1"
   managed_code_path: /opt/overview
