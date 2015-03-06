@@ -1,8 +1,8 @@
 sudo stop overview-worker || true
 sudo stop overview-documentset-worker || true
 
-sleep 3
+sleep 2
 
-sudo start overview-worker
-sudo start overview-documentset-worker
+sudo start overview-worker || true
+sudo start overview-documentset-worker || true
 
